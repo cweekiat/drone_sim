@@ -171,6 +171,8 @@ cd ..
 catkin build
 ```
 
+## Running the simulation
+
 Close all terminals you do not need and run simulation.
 ```
 cd catkin_ws/src/drone_sim/scripts
