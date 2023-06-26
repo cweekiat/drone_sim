@@ -1,6 +1,8 @@
 # drone_sim
  Multi-Drone simulation using Ardupilot
 
+More detailed step-by-step installation (should ou require) can be found here. https://github.com/Intelligent-Quads/iq_tutorials/tree/master
+
 
 ## 1. Install ROS
 
@@ -55,8 +57,48 @@ install geographiclib dependancy
 sudo ~/catkin_ws/src/mavros/mavros/scripts/install_geographiclib_datasets.sh
 ```
 
+## 4. Installing Ardupilot and MAVProxy Ubuntu 20.04
 
-## 4. Install Gazebo [***20.04***]
+### Video Tutorial at https://youtu.be/1FpJvUVPxL0
+
+### Clone ArduPilot
+
+In home directory:
+```
+cd ~
+sudo apt install git
+git clone https://github.com/ArduPilot/ardupilot.git
+cd ardupilot
+```
+
+### Install dependencies:
+```
+cd ardupilot
+Tools/environment_install/install-prereqs-ubuntu.sh -y
+```
+
+reload profile
+```
+. ~/.profile
+```
+### If the next step "git submodule update" fails
+```
+git config --global url.https://.insteadOf git://
+```
+
+### Checkout Latest Copter Build
+```
+git checkout Copter-4.0.4
+git submodule update --init --recursive
+```
+
+Run SITL (Software In The Loop) once to set params:
+```
+cd ~/ardupilot/ArduCopter
+sim_vehicle.py -w
+```
+
+## 5. Install Gazebo [***20.04***]
 
 Setup your computer to accept software from http://packages.osrfoundation.org:
 ```
@@ -120,45 +162,23 @@ cd ~/ardupilot/ArduCopter/
 sim_vehicle.py -v ArduCopter -f gazebo-iris --console
 ```
 
+## 6. Finally, installing the simulation
 
-## 5. Installing Ardupilot and MAVProxy Ubuntu 20.04
-
-### Video Tutorial at https://youtu.be/1FpJvUVPxL0
-
-### Clone ArduPilot
-
-In home directory:
+Clone repository into catkin workspace.
 ```
-cd ~
-sudo apt install git
-git clone https://github.com/ArduPilot/ardupilot.git
-cd ardupilot
+cd catkin_ws/src/
+git clone https://github.com/cweekiat/drone_sim.git
+cd ..
+catkin build
 ```
 
-### Install dependencies:
+Close all terminals you do not need and run simulation.
 ```
-cd ardupilot
-Tools/environment_install/install-prereqs-ubuntu.sh -y
+cd catkin_ws/src/drone_sim/scripts
+./start_sim
 ```
+Note: start_sim will run every launch file and python script require for the simulation. It will open many terminals & windows in the process. 
 
-reload profile
-```
-. ~/.profile
-```
-### If the next step "git submodule update" fails
-```
-git config --global url.https://.insteadOf git://
-```
 
-### Checkout Latest Copter Build
-```
-git checkout Copter-4.0.4
-git submodule update --init --recursive
-```
 
-Run SITL (Software In The Loop) once to set params:
-```
-cd ~/ardupilot/ArduCopter
-sim_vehicle.py -w
-```
 
