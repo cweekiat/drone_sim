@@ -1,8 +1,9 @@
 # Multi-Drone Simulation using Ardupilot
 
-More detailed step-by-step installation (should uou require) can be found here. https://github.com/Intelligent-Quads/iq_tutorials/tree/master
+More detailed step-by-step installation (should you require) can be found here. https://github.com/Intelligent-Quads/iq_tutorials/tree/master
 
-## Installation
+## FULL Installation Guide 
+
 ### 1. Install ROS
 
    - Do _Desktop-full Install_
@@ -176,7 +177,4 @@ cd catkin_ws/src/drone_sim/scripts
 ./start_sim
 ```
 Note: start_sim will run every launch file and python script require for the simulation. It will open many terminals & windows in the process. 
-
-
-
 
