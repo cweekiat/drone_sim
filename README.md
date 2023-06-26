@@ -167,7 +167,7 @@ Clone repository into catkin workspace.
 ```
 cd catkin_ws/src/
 git clone https://github.com/cweekiat/drone_sim.git
-cd ..
+cd ~/catkin_ws/
 catkin build
 ```
 
