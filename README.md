@@ -163,6 +163,12 @@ sim_vehicle.py -v ArduCopter -f gazebo-iris --console
 
 ### 6. Finally, installing the simulation
 
+Install Drone Kit
+
+```
+sudo pip install dronekit
+```
+
 Clone repository into catkin workspace.
 ```
 cd catkin_ws/src/
@@ -176,6 +182,7 @@ catkin build
 Close all terminals you do not need and run simulation.
 ```
 cd catkin_ws/src/drone_sim/scripts
+chmod +x start_sim end_sim multi_ardupilot.sh target.sh observer.sh
 ./start_sim
 ```
 Note: start_sim will run every launch file and python script require for the simulation. It will open many terminals & windows in the process. 
