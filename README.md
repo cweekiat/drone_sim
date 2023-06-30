@@ -161,12 +161,14 @@ cd ~/ardupilot/ArduCopter/
 sim_vehicle.py -v ArduCopter -f gazebo-iris --console
 ```
 
+
+
 ### 6. Finally, installing the simulation
 
 Install Drone Kit
 
 ```
-sudo pip install dronekit
+sudo pip install dronekit simple-pid
 ```
 
 Clone repository into catkin workspace.
@@ -177,12 +179,24 @@ cd ~/catkin_ws/
 catkin build
 ```
 
+```
+echo "GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/catkin_ws/src/drone_sim/models" >> ~/.bashrc
+echo "GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/catkin_ws/src/drone_sim/worlds" >> ~/.bashrc
+```
+
 ## Running the simulation
+
+
+### Launch gazebo world 
+
+```
+roslaunch drone_sim multi_drone.launch
+```
 
 Close all terminals you do not need and run simulation.
 ```
-cd catkin_ws/src/drone_sim/scripts
-chmod +x start_sim end_sim multi_ardupilot.sh target.sh observer.sh
+cd ~/catkin_ws/src/drone_sim/scripts
+chmod +x start_sim end_sim multi-ardupilot.sh target.sh observer.sh
 ./start_sim
 ```
 Note: start_sim will run every launch file and python script require for the simulation. It will open many terminals & windows in the process. 

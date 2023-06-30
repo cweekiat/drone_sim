@@ -2,7 +2,7 @@
 <sdf version="1.6" >
   <model name="chaser">
     <include>
-      <uri>model://$(find drone_sim)/models/iris_base</uri>
+      <uri>model://iris_base</uri>
     </include>
 
     <link name="cam_link">

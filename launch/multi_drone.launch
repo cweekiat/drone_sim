@@ -1,9 +1,9 @@
 <launch>
   
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
-  <include file="$(find drone_sim)/launch/empty_world.launch">
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find drone_sim)/worlds/multi_drone.world"/>
-    <arg name="gui" value="false"/>
+    <arg name="gui" value="true"/>
     <!-- more default parameters can be changed here -->
   </include>
 
