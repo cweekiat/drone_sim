@@ -51,7 +51,7 @@
 		    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
 		      <always_on>true</always_on>
 		      <update_rate>30</update_rate>
-		      <cameraName>observer</cameraName>
+		      <cameraName>drone1</cameraName>
 		      <imageTopicName>image_raw</imageTopicName>
 		      <cameraInfoTopicName>camera_info</cameraInfoTopicName>
 		      <frameName>camera_link</frameName>
@@ -276,17 +276,6 @@
         <jointName>iris::rotor_3_joint</jointName>
         <multiplier>-838</multiplier>
         <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
-      </control>
-
-      <control channel="5">
-        <jointName>gimbal::tilt_joint</jointName>
-        <multiplier>3.14159265</multiplier>
-        <offset>-0.5</offset>
-        <servo_min>1100</servo_min>
-        <servo_max>1900</servo_max>
-        <type>COMMAND</type>
-        <cmd_topic>/gimbal/cmd_tilt</cmd_topic>
-        <p_gain>3</p_gain>
       </control>
 
     </plugin>

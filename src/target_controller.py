@@ -61,8 +61,7 @@ def s_shaped():
         target.send_local_ned_velocity(velocity/4,0,0)
         time.sleep(1)
         # print("Moving N")
-
-straight()
+target.condition_yaw(45)
 
 print('Mission Completed.')
 #time.sleep(2)

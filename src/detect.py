@@ -36,11 +36,13 @@ class detector:
                             cv2.CHAIN_APPROX_SIMPLE)[-2]
     
     if len(cnts)>0:
-        blue_area = max(cnts, key=cv2.contourArea)
-        (xg,yg,wg,hg) = cv2.boundingRect(blue_area)
-        cv_copy = cv2.rectangle(cv_copy,(xg,yg),(xg+wg, yg+hg),(0,255,0),2)
-        self.array = [xg+wg/2, yg+hg/2, wg, hg]       # Position of Bbox
-
+      blue_area = max(cnts, key=cv2.contourArea)
+      (xg,yg,wg,hg) = cv2.boundingRect(blue_area)
+      cv_copy = cv2.rectangle(cv_copy,(xg,yg),(xg+wg, yg+hg),(0,255,0),2)
+      self.array = [xg+wg/2, yg+hg/2, wg, hg]       # Position of Bbox
+    else: 
+      self.array = [0,0,0,0]
+				
     cv_copy = cv2.rectangle(cv_copy,(320,180),(960, 540),(255,0,0),2)
     cv_copy = cv2.line(cv_copy, (640,0), (640,720), (255,255,255), 1)
     cv_copy = cv2.line(cv_copy, (0,360), (1280,360), (255,255,255), 1)
