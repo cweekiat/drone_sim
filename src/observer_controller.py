@@ -7,9 +7,9 @@ import argparse
 from pymavlink import mavutil
 from control import drone
 
-observer_udp = '127.0.0.1:14561' 
+observer_udp = '127.0.0.1:14550' 
 
-observer  = drone('target')
+observer  = drone('observer')
 observer.connectMyCopter(observer_udp)
 observer.arm_takeoff(10)
 flight_time = 10

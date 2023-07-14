@@ -1,4 +1,6 @@
 #!/bin/bash
+cd ~/ardupilot/Tools/autotest 
+
 
 gnome-terminal \
  --tab -e "sim_vehicle.py -v ArduCopter -f gazebo-iris -I0" \

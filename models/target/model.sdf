@@ -1,9 +1,8 @@
 <?xml version='1.0'?>
 <sdf version="1.6">
-  <model name="iris_demo">
+  <model name="target">
     <include>
       <uri>model://iris_with_standoffs</uri>
-
     </include>
 
     <include>
@@ -514,11 +513,11 @@
       <upward>0 0 1</upward>
       <link_name>iris::rotor_3</link_name>
     </plugin>
-    <plugin name="arducopter_plugin" filename="libArduCopterPlugin.so">
-      <imuName>iris_demo::iris::iris/imu_link::imu_sensor</imuName>
+    <plugin name="arducopter_plugin" filename="libArduPilotPlugin.so">
       <fdm_addr>127.0.0.1</fdm_addr>
       <fdm_port_in>9002</fdm_port_in>
       <fdm_port_out>9003</fdm_port_out>
+      <imuName>iris::iris/imu_link::imu_sensor</imuName>
       <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
       <rotor id="0">
         <vel_p_gain>0.01</vel_p_gain>

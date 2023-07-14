@@ -12,12 +12,12 @@ out = cv2.VideoWriter('output.mp4',cv2.VideoWriter_fourcc(*'mp4v'), 30, disp_siz
 
 class detector:
   def __init__(self):
-    self.image_sub = rospy.Subscriber('/observer/image_raw',Image,self.callback)
+    self.image_sub = rospy.Subscriber('/drone1/image_raw',Image,self.callback)
     self.camera_pub= rospy.Publisher('/camera_coord', Float64MultiArray, queue_size=10)
     self.bridge = CvBridge()
     self.rate = rospy.Rate(30)
     self.image = Image()
-    self.array = []
+    self.array = [0,0,0,0]
 
   def callback(self,data):
     self.image = data

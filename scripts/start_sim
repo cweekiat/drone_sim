@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
 
-gnome-terminal -- roscore &
-
-sleep 3
 gnome-terminal -- roslaunch drone_sim multi_drone.launch &
 
-sleep 5
-#gnome-terminal -- ~/catkin_ws/src/drone_sim/scripts/multi-ardupilot.sh &
-
-gnome-terminal -- ~/catkin_ws/src/drone_sim/scripts/target.sh &
-gnome-terminal -- ~/catkin_ws/src/drone_sim/scripts/observer.sh &
+sleep 10
+gnome-terminal -- ~/catkin_ws/src/drone_sim/scripts/drone1.sh &
+gnome-terminal -- ~/catkin_ws/src/drone_sim/scripts/drone2.sh &
 
 sleep 25
 gnome-terminal -- python3 ~/catkin_ws/src/drone_sim/src/target_controller.py & 
