@@ -96,7 +96,6 @@ def main():
         rospy.loginfo(cmd_vel)
         observer.vel_pub.publish(Float64MultiArray(data = cmd_vel))
         observer.send_servo_commands(cmd_vel[0], cmd_vel[1], cmd_vel[2])#yaw,forward,down
-        observer.condition_yaw(cmd_vel[0])
 
     print("Shutting down")
     cmd_vel = (0, 0, 0)
