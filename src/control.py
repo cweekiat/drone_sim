@@ -6,8 +6,8 @@ import math
 import argparse
 from pymavlink import mavutil
 
-target_udp = '127.0.0.1:14551'
-observer_udp = '127.0.0.1:14561'
+#target_udp = '127.0.0.1:14551'
+#observer_udp = '127.0.0.1:14561'
 # target_tcp = 'tcpin:0.0.0.0:5760'
 # observer_tcp = 'tcp:127.0.0.1:5760'
 
@@ -31,7 +31,7 @@ class drone:
             connection_string = sitl.connection_string()
 
         print('Trying to connect to', self.name)
-        self.vehicle = connect(connection_string, wait_ready = True)
+        self.vehicle = connect(connection_string, wait_ready = False)
         print('Connection successful.')
 
         return self.vehicle
@@ -111,7 +111,7 @@ class drone:
                 0, 0, 0)    # param 5 ~ 7 not used
             # send command to vehicle
             self.vehicle.send_mavlink(msg)
-            # self.vehicle.flush()
+
         elif yaw < 0:
             msg = self.vehicle.message_factory.command_long_encode(
                 0, 0,    # target_system, target_component
@@ -134,7 +134,7 @@ class drone:
         0, 0, 0,        #position
         vx, 0, vz,      #velocity in m/s
         0, 0, 0,        #acceleration
-        0,0             #yaw,yawrate
+        yaw,0             #yaw,yawrate
         )
         print(yaw, vx, vz)
         self.vehicle.send_mavlink(msg)
@@ -446,9 +446,14 @@ class drone:
     
     def set_pitch(self, data):
         # data = data/(180/math.pi)
-        self.vehicle.gimbal.rotate(data, 0, 0)
-        # self.vehicle.send_mavlink(msg)
-        # print('sent')
+        #self.vehicle.gimbal.rotate(data, 0, 0)
+        msg = self.vehicle.message_factory.command_long_encode(1,0,205,0,0,0,0,0,0,0,0)
+        self.vehicle.send_mavlink(msg)
+        print('sent')
+        
+    def gimbal(self,p,r,y):
+    		self.vehicle.gimbal.rotate(p,r,y)
+    		
 
 
 
