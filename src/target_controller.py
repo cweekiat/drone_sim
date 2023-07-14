@@ -62,7 +62,7 @@ def s_shaped():
         time.sleep(1)
         # print("Moving N")
 
-s_shaped()
+straight()
 
 print('Mission Completed.')
 #time.sleep(2)
